@@ -1,0 +1,238 @@
+1. Elektrische voertuig batterijen 
+- Als R-strategie kiezen we recycle. De batterijen kunnen namelijk in andere gebieden 
+nog steeds goed gebruikt worden en zo recyclen lithium, kobalt en nikkel dat moeilijk 
+winbaar is. 
+
+
+ 
+
+2. Onderzoeksvraag: Hoeveel kan de vraag naar Lithium en kobalt dalen als we de 
+Elektrische voertuig batterijen gaan recyclen? 
+
+
+ 
+
+3. Onze variabele is de totale vraag naar lithium en kobalt. 
+
+
+ 
+
+4. Onze reference model case is als we de batterijen niet recyclen wat er dan gebeurt 
+met de vraag van Lithium en kobalt. 
+
+
+ 
+
+Onze agents zijn en hoe onze omgeving in elkaar zit. 
+
+1. Elektrische voertuig eigenaren. 
+- Deze hebben de keuze als hun batterij capaciteit 80% raakt om hem te 
+recyclen of weg te gooien. 
+2. Elektrische batterij fabrikant 
+- Deze hebben invloed op het aanbod van de nieuwe elektrische batterijen. 
+- Het recyclen heeft hier dus invloed op. 
+3. Recyclebedrijven. 
+- krijgen de gerecyclede batterijen binnen en geven het lithium en kobalt aan 
+de elektrische batterij fabrikant. 
+
+
+Groei van de EV-markt 
+
+ 
+
+Jaar 
+
+Gemiddelde 
+jaarlijkse groei (%) 
+
+Bron 
+
+ 
+
+2024-2030 
+
+8-12% 
+
+ElaadNL 
+
+https://elaad.nl/updat
+e-elaad-outlook-
+personenautos-
+versnelling-groei-
+elektrische-autos-na-
+2030-
+verwacht/?utm_sour
+ce=chatgpt.com 
+
+2030-2035 
+
+12-18% 
+
+ElaadNL 
+
+https://elaad.nl/updat
+e-elaad-outlook-
+personenautos-
+versnelling-groei-
+elektrische-autos-na-
+2030-
+verwacht/?utm_sour
+ce=chatgpt.com 
+
+2035-2050 
+
+5-10% 
+
+Change.inc 
+
+https://www.change.i
+nc/mobiliteit/in-2050-
+is-de-hele-
+automarkt-elektrisch-
+
+
+
+
+aldus-elaadnl-
+40794?utm_source=
+chatgpt.com 
+
+
+
+ 
+
+Efficiëntie van Recycling 
+
+ 
+
+Gebruik een jaarlijkse toename van 2-3% in recyclingefficiëntie als basis voor de 
+komende decennia. 
+
+ 
+
+1. https://rmi.org/understanding-how-ev-battery-recycling-can-address-future-mineral-
+supply-gaps/?utm_source 
+2. https://www.theguardian.com/environment/article/2024/aug/25/bacteria-helping-to-
+extract-rare-metals-from-old-batteries-in-boost-for-green-tech? 
+3. https://www.reuters.com/business/autos-transportation/jlr-altilium-test-ev-batteries-
+made-with-recycled-materials-2024-09-26/ 
+
+
+ 
+
+ 
+
+ 
+
+Prijs en Beschikbaarheid van Lithium en Kobalt 
+
+ 
+
+Het doel van dit onderzoek is, door middel van een agent-based model (ABM), vast te 
+stellen in welke mate de vraag naar lithium en kobalt kan dalen door grootschalige recycling 
+van EV-batterijen. 
+
+ 
+
+ 
+
+Conceptualisatie: 
+
+Welke processen worden gesimuleerd? 
+
+● De levenscyclus van elektrische voertuig (EV) batterijen, inclusief het gebruik, de 
+beslissing om te recyclen of weg te gooien, en de impact hiervan op de vraag naar 
+lithium en kobalt. 
+● De groei van de EV-markt en de daaruit voortvloeiende behoefte aan nieuwe 
+batterijen. 
+● De efficiëntie van het recyclingproces en de jaarlijkse verbeteringen hierin. 
+● De interactie tussen verschillende actoren zoals batterijfabrikanten, recyclebedrijven 
+en EV-eigenaren. 
+● De impact van recycling op de beschikbaarheid en prijs van lithium en kobalt. 
+
+
+Welke concepten/eigenschappen zijn nodig? 
+
+● Levensduur van een batterij (capaciteit neemt af tot 80% → beslismoment) 
+● Keuzegedrag van EV-eigenaren (recyclen of weggooien) 
+● Recycling-efficiëntie (hoeveel lithium en kobalt kan worden teruggewonnen, groeit 
+met 2-3% per jaar) 
+● Productie van nieuwe batterijen (afhankelijk van de groei van de EV-markt en de 
+beschikbaarheid van gerecyclede materialen) 
+
+
+
+● Vraag en aanbod van lithium en kobalt (hoe sterk wordt de vraag beïnvloed door 
+recycling?) 
+● Marktgroei van EV's (gemiddelde jaarlijkse groei, afhankelijk van de periode) 
+● Externe factoren zoals prijsfluctuaties (impact van gerecycled materiaal op de 
+marktprijs) 
+
+
+Welke agenten zijn nodig? 
+
+● EV-eigenaren: Beslissen wat er met hun batterij gebeurt zodra deze 80% capaciteit 
+bereikt. 
+● Batterijfabrikanten: Produceren nieuwe batterijen en kunnen afhankelijk zijn van 
+gerecycled materiaal. 
+● Recyclebedrijven: Verwerken oude batterijen en leveren gerecycled lithium en 
+kobalt aan fabrikanten. 
+
+
+Welke type omgeving? 
+
+ 
+
+Er moet een link zijn tussen de consumenten zelf, denk bijvoorbeeld aan dat consumenten 
+geen idee hebben dat ze ergens batterijen kunnen recyclen. Dat is een link tussen de 
+consumenten in het netwerk. Marketing is ook een optie, iets in die richting dat kan zorgen 
+voor emergent gedrag. 
+
+● Dynamische marktomgeving waarin de groei van EV’s en de vraag naar batterijen 
+verandert. 
+● Beslissingsomgeving voor EV-eigenaren waarin zij keuzes maken op basis van 
+prikkels (bijv. kostenvoordeel van recycling). 
+● Recyclingnetwerk waarin batterijen worden verwerkt en grondstoffen terugstromen 
+naar de markt. 
+
+
+Welke interacties, tussen wie? 
+
+EV-eigenaren → Recyclebedrijven 
+
+● EV-eigenaren beslissen om hun batterij te recyclen of weg te gooien. 
+● Als ze kiezen voor recycling, sturen ze hun batterij naar een recyclebedrijf. 
+
+
+Recyclebedrijven → Batterijfabrikanten 
+
+● Recyclebedrijven verwerken oude batterijen en winnen lithium en kobalt terug. 
+● Ze leveren de gerecyclede materialen aan batterijfabrikanten. 
+
+
+Batterijfabrikanten → EV-eigenaren 
+
+● Batterijfabrikanten produceren nieuwe batterijen, deels met gerecycled materiaal. 
+● EV-eigenaren kopen deze batterijen voor hun voertuigen 
+
+
+Hoe operationaliseer je deze processen? 
+
+● EV-eigenaren krijgen een probabilistisch model voor hun beslissingen (bijv. kans dat 
+ze recyclen versus weggooien). 
+
+
+
+● Recycling-efficiëntie neemt jaarlijks toe met 2-3%, wat de terugwinning van lithium 
+en kobalt beïnvloedt. 
+● De EV-marktgroei wordt gemodelleerd met de gegeven groeipercentages per 
+periode. 
+● De productie van nieuwe batterijen wordt bepaald door de groei van de EV-markt 
+en de beschikbaarheid van gerecycled materiaal. 
+● De totale vraag naar lithium en kobalt wordt berekend als functie van de productie 
+van nieuwe batterijen en het aandeel gerecycled materiaal. 
+
+
+ 
+
+
