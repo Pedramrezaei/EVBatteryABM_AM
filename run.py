@@ -9,7 +9,7 @@ from constants import (
     SCENARIOS
 )
 
-def run_model(params=None, verbose=True):
+def run_model(params=None, verbose=True, debug_efficiency=False):
     """Run a single instance of the model with given parameters."""
     if params is None:
         params = {}
@@ -21,6 +21,10 @@ def run_model(params=None, verbose=True):
     max_steps = MAX_SIMULATION_STEPS  # Should be enough for most simulations (2024-2124)
     step_count = 0
     
+    # Debug initial efficiency value
+    if debug_efficiency and verbose:
+        print(f"Initial recycling efficiency: {model.recycling_efficiency:.4f}")
+    
     # Run until the end year or max steps reached
     start_time = time.time()
     if verbose:
@@ -29,9 +33,17 @@ def run_model(params=None, verbose=True):
     while model.running and step_count < max_steps:
         if verbose and step_count % PROGRESS_REPORT_INTERVAL == 0:  # Report progress every 5 years
             print(f"  - Simulating year {model.current_year}...")
-        
+            
+        # Debug efficiency growth
+        if debug_efficiency and step_count < 10 and verbose:
+            old_efficiency = model.recycling_efficiency
+            
         model.step()
         step_count += 1
+        
+        # Debug efficiency after step
+        if debug_efficiency and step_count < 10 and verbose:
+            print(f"    Year {model.current_year-1}->{model.current_year}: Efficiency {old_efficiency:.4f} -> {model.recycling_efficiency:.4f} (change: +{(model.recycling_efficiency - old_efficiency):.4f})")
     
     end_time = time.time()
     
@@ -50,7 +62,8 @@ def run_multiple_scenarios():
     results = {}
     for name, params in SCENARIOS:
         print(f"Running {name} scenario...")
-        results[name] = run_model(params)
+        # Use debug_efficiency=True for baseline scenario only
+        results[name] = run_model(params, debug_efficiency=(name == "baseline"))
     
     return results
 

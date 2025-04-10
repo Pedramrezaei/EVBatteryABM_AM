@@ -59,6 +59,18 @@ class EVBatteryModel(mesa.Model):
         # Track next unique ID
         self.next_id = 0
         
+        # Track materials - separate current pool from cumulative totals
+        self.recycled_lithium = 0  # Current available pool
+        self.recycled_cobalt = 0   # Current available pool
+        self.new_lithium_required = 0
+        self.new_cobalt_required = 0
+        
+        # Track cumulative totals
+        self.total_lithium_recycled = 0  # Total ever recycled
+        self.total_cobalt_recycled = 0   # Total ever recycled
+        self.total_lithium_used_from_recycled = 0  # Total recycled lithium used
+        self.total_cobalt_used_from_recycled = 0   # Total recycled cobalt used
+        
         # Data collection
         self.datacollector = mesa.DataCollector(
             model_reporters={
@@ -67,18 +79,12 @@ class EVBatteryModel(mesa.Model):
                 "Recycling Efficiency": lambda m: m.recycling_efficiency,
                 "Total Lithium Demand": lambda m: m.calculate_lithium_demand(),
                 "Total Cobalt Demand": lambda m: m.calculate_cobalt_demand(),
-                "Recycled Lithium": lambda m: m.recycled_lithium,
-                "Recycled Cobalt": lambda m: m.recycled_cobalt,
+                "Recycled Lithium": lambda m: m.total_lithium_recycled,  # Changed to show cumulative
+                "Recycled Cobalt": lambda m: m.total_cobalt_recycled,    # Changed to show cumulative
                 "New Lithium Required": lambda m: m.new_lithium_required,
                 "New Cobalt Required": lambda m: m.new_cobalt_required,
             }
         )
-        
-        # Track materials
-        self.recycled_lithium = 0
-        self.recycled_cobalt = 0 
-        self.new_lithium_required = 0
-        self.new_cobalt_required = 0
         
         # Store references to agent types for faster lookup
         self.ev_owners = []
@@ -133,15 +139,16 @@ class EVBatteryModel(mesa.Model):
     
     def step(self):
         """Advance the model by one step (one year)."""
-        # Reset tracking variables for this step
+        # Reset only demand variables for this step, not accumulated recycled materials
         self.new_lithium_required = 0
         self.new_cobalt_required = 0
         
         # Step all agents
         self.schedule.step()
         
-        # Update recycling efficiency
-        self.recycling_efficiency = min(MAX_RECYCLING_EFFICIENCY, self.recycling_efficiency * (1 + self.recycling_efficiency_growth))
+        # Update recycling efficiency with compounding growth
+        self.recycling_efficiency = min(MAX_RECYCLING_EFFICIENCY, 
+                                       self.recycling_efficiency * (1 + self.recycling_efficiency_growth))
         
         # Grow EV market
         growth_rate = self.get_current_growth_rate()

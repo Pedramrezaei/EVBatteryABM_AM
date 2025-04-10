@@ -25,9 +25,13 @@ class BatteryManufacturer(mesa.Agent):
         recycled_lithium_used = min(available_recycled_lithium, lithium_needed)
         recycled_cobalt_used = min(available_recycled_cobalt, cobalt_needed)
         
-        # Update model's recycled materials tracking
+        # Update model's recycled materials tracking (current available pool)
         self.model.recycled_lithium -= recycled_lithium_used
         self.model.recycled_cobalt -= recycled_cobalt_used
+        
+        # Update model's cumulative tracking of recycled materials used
+        self.model.total_lithium_used_from_recycled += recycled_lithium_used
+        self.model.total_cobalt_used_from_recycled += recycled_cobalt_used
         
         # Calculate new materials needed
         new_lithium_needed = lithium_needed - recycled_lithium_used
